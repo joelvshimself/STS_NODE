@@ -1,4 +1,4 @@
-name: Railway Deployment
+name: Deploy to Railway
 
 on:
   push:
@@ -15,13 +15,6 @@ jobs:
 
       - name: Install Railway CLI
         run: npm install -g railway
-
-      - name: Set up Railway project
-        run: |
-          railway link --project 6d672228-8b8c-4ecd-bf26-5627c324910e
-
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
       - name: Deploy to Railway
         run: railway up
