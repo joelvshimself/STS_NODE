@@ -16,4 +16,4 @@ jobs:
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
-          railway up --service="Sts" --environment="production"
+          railway up --service="STS_NODE" --environment="production"
