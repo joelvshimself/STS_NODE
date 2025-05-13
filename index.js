@@ -17,6 +17,10 @@ app.get('/', (req, res) => {
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 
 
 app.listen(port, () => {
