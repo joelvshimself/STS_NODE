@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const { swaggerUi, swaggerSpec } = require('./swagger');
 const port = process.env.PORT || 3000;
 
 const userRoutes = require('./controller/UserController');
@@ -13,6 +14,9 @@ app.use('/transactions', transactionRoutes);
 app.get('/', (req, res) => {
   res.send('Bienvenido a la API ');
 });
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 
 app.listen(port, () => {
