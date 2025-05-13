@@ -1,4 +1,4 @@
-name: Deploy to Railway
+name: Railway Deployment
 
 on:
   push:
@@ -8,11 +8,22 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy with Railway
-        uses: railwayapp/railway-action@v1.2.3
-        with:
-          railwayToken: ${{ secrets.RAILWAY_TOKEN }}
+      - name: Install Railway CLI
+        run: npm install -g railway
+
+      - name: Set up Railway project
+        run: |
+          railway link --project 6d672228-8b8c-4ecd-bf26-5627c324910e
+
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+      - name: Deploy to Railway
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
