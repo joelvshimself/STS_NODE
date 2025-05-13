@@ -12,7 +12,7 @@ app.use(express.json());
 app.use('/users', userRoutes);
 app.use('/transactions', transactionRoutes);
 app.get('/', (req, res) => {
-  res.send('HOLA MUNDO');
+  res.send('OLA MUNDO');
 });
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
