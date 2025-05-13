@@ -93,6 +93,54 @@ Asegúrate de:
 3. El workflow `.github/workflows/deploy.yml` está activo.
 
 ---
+## 🔐 Seguridad y Autenticación (por implementar)
+
+- **JWT (JSON Web Tokens)**  
+  Manejo de sesiones seguras mediante `jsonwebtoken`.  
+  - Generar tokens al hacer login.
+  - Verificar tokens en rutas protegidas con middleware personalizado.
+  - Incluir `req.user` con los datos del usuario autenticado.
+
+- **Encriptación de contraseñas**  
+  Usar `bcrypt` para almacenar contraseñas de forma segura.  
+  - `bcrypt.hash(password, saltRounds)` al registrar.
+  - `bcrypt.compare(input, hashed)` al autenticar.
+
+---
+
+## 📊 Observabilidad y Monitoreo (por implementar)
+
+- **Morgan (logger HTTP)**  
+  Registrar automáticamente cada request entrante.  
+  ```bash
+  npm install morgan
+  ```
+  ```js
+  const morgan = require('morgan');
+  app.use(morgan('dev'));
+  ```
+
+- **Helmet (seguridad de headers)**  
+  Protege tu app de ataques comunes agregando headers seguros.  
+  ```bash
+  npm install helmet
+  ```
+  ```js
+  const helmet = require('helmet');
+  app.use(helmet());
+  ```
+
+- **Rate Limiting (anti-spam/DDOS)**  
+  Limita el número de peticiones por IP para evitar abuso.  
+  ```bash
+  npm install express-rate-limit
+  ```
+  ```js
+  const rateLimit = require('express-rate-limit');
+  const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
+  app.use(limiter);
+  ```
+---
 
 ## 📬 Contacto
 
