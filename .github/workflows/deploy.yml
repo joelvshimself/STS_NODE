@@ -39,6 +39,6 @@ jobs:
 
 
     - name: Deploy
-      run: railway up
+      run: railway up --service STS_NODE
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
