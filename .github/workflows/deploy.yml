@@ -12,18 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Deploy with Railway
+        uses: railwayapp/railway-action@v1.2.3
         with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Install Railway CLI
-        run: npm install -g railway
-
-      - name: Deploy to Railway
-        run: railway deploy
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          railwayToken: ${{ secrets.RAILWAY_TOKEN }}
